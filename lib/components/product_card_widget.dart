@@ -98,7 +98,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget>
                 r'''$.image''',
               ).toString(),
               width: double.infinity,
-              height: 120.0,
+              height: 130.0,
               fit: BoxFit.cover,
             ),
           ),

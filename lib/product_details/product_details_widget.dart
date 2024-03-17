@@ -114,9 +114,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         leading: InkWell(
           splashColor: Colors.transparent,
@@ -158,34 +158,6 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                         r'''$.id''',
                       ).toString()),
               );
-              if (FFAppState().favorites.isEmpty) {
-                setState(() {
-                  FFAppState().addToFavorites(getJsonField(
-                    widget.productDetails,
-                    r'''$.id''',
-                  ).toString());
-                });
-              } else {
-                if (FFAppState().favorites.contains(getJsonField(
-                          widget.productDetails,
-                          r'''$.id''',
-                        ).toString()) ==
-                    true) {
-                  setState(() {
-                    FFAppState().removeFromFavorites(getJsonField(
-                      widget.productDetails,
-                      r'''$.id''',
-                    ).toString());
-                  });
-                } else {
-                  setState(() {
-                    FFAppState().addToFavorites(getJsonField(
-                      widget.productDetails,
-                      r'''$.id''',
-                    ).toString());
-                  });
-                }
-              }
             },
             value: FFAppState().favorites.contains(getJsonField(
                   widget.productDetails,
@@ -249,7 +221,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
                                 fontFamily: 'Outfit',
-                                color: const Color(0xFF14181B),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -265,7 +237,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                       ).toString(),
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily: 'Plus Jakarta Sans',
-                            color: const Color(0xFF57636C),
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             fontSize: 14.0,
                             fontWeight: FontWeight.normal,
                           ),
@@ -289,7 +261,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                               .headlineSmall
                               .override(
                                 fontFamily: 'Outfit',
-                                color: const Color(0xFF14181B),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -343,10 +315,6 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                     ).animateOnPageLoad(
                         animationsMap['rowOnPageLoadAnimation']!),
                   ),
-                  Text(
-                    FFAppState().favorites.length.toString(),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                  ),
                 ],
               ),
             ),
@@ -361,7 +329,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
               width: double.infinity,
               height: 100.0,
               decoration: BoxDecoration(
-                color: const Color(0xFFF1F4F8),
+                color: FlutterFlowTheme.of(context).secondaryBackground,
                 boxShadow: const [
                   BoxShadow(
                     blurRadius: 4.0,
@@ -372,7 +340,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 34.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 34.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -383,7 +351,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget>
                       },
                       text: 'Add to Cart',
                       options: FFButtonOptions(
-                        width: 130.0,
+                        width: MediaQuery.sizeOf(context).width * 0.9,
                         height: 50.0,
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
